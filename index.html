@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="rentals">
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body class="container" ng-controller="RentalController as store">
+        
+        <script type="text/javascript" src="angular.min.js"></script>
+        <script type="text/javascript" src="app.js"></script>
+        
+        <h1>Angular Car Rentals</h1>
+        <div ng-repeat = "product in store.products">
+            <h3> Car Type: {{product.type}} </h3>
+            <p ng-hide="product.soldOut"> Description: {{product.description}} </p>
+            <p><img ng-src="{{product.image}}"></p>
+            <h4 ng-hide="product.soldOut"> Daily Price: {{product.price | currency}}</h4>
+            <h4 ng-hide="product.soldOut"> Availability: {{product.available}} {{product.carStat()}}</h4>
+            <!--<h4 ng-hide="product.soldOut"> Total Reserved: {{product.carStat()}}</h4>-->
+            <p ng-show="product.soldOut">Vehicle Unavailable</p>
+            <h5 ng-hide="product.soldOut"> Colors: {{product.colors}}</h5>
+            
+            <div ng-controller="Rented" ng-hide="product.soldOut">
+                <button ng-click="rentMe()">Rent Now</button>
+            </div>
+            
+        </div>
+    </body>
+</html>
+
+
+
+
+
+<!--Initial Attempts - bless my heart-->
+<!--<!DOCTYPE html>-->
+<!--<html ng-app="store">-->
+<!--<head>-->
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">"-->
+<!--</head>-->
+
+<!--<body ng-controller="StoreController as store">-->
+<!--    <div ng-hide="store.product.soldOut">-->
+<!--        <h1> {{store.product[0].name}} </h1>-->
+<!--        <h2> ${{store.product[0].price}} </h2>-->
+<!--        <p> {{store.product[0].description}} </p>-->
+<!--        <button ng-show="store.product.canPurchase"> Add to Cart </button>-->
+<!--        <p> {{"hello " + "you"}}</p>-->
+        
+<!--    </div>-->
+<!--<body>-->
+<!--    <script type="text/javascript" src="angular.min.js"></script>-->
+<!--    <script type="text/javascript" src="app.js"></script>-->
+<!--    <p> {{"hello " + "you"}} </p>-->
+<!--    <p> {{"why is this working"}}</p>-->
+<!--    <p> I AM {{7+2}}</p>-->
+<!--</body>-->
+
+
+
+<!--</html>-->
